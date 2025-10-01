@@ -7,7 +7,7 @@ checkEnvVariables()
  */
 const nextConfig = {
   reactStrictMode: true,
-  output: 'standalone', // Enable standalone output for Docker
+  // output: 'standalone', // Disabled for Railway - only needed for Docker
   
   logging: {
     fetches: {
