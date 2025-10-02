@@ -9,14 +9,6 @@ const nextConfig = {
   reactStrictMode: true,
   output: 'standalone',
   
-  // Skip static generation during build - generate on-demand
-  experimental: {
-    isrMemoryCacheSize: 0,
-  },
-  
-  // Generate pages on-demand, not at build time
-  dynamicParams: true,
-  
   logging: {
     fetches: {
       fullUrl: true,
