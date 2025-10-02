@@ -9,50 +9,8 @@ type Props = {
 }
 
 export async function generateStaticParams() {
-  // Skip static generation when using mock data
-  if (process.env.NEXT_PUBLIC_USE_MOCK_DATA === 'true') {
-    return []
-  }
-
-  try {
-    const countryCodes = await listRegions().then((regions) =>
-      regions?.map((r) => r.countries?.map((c) => c.iso_2)).flat()
-    )
-
-    if (!countryCodes) {
-      return []
-    }
-
-    const promises = countryCodes.map(async (country) => {
-      const { response } = await listProducts({
-        countryCode: country,
-        queryParams: { limit: 100 },
-      })
-
-      return {
-        country,
-        products: response.products,
-      }
-    })
-
-    const countryProducts = await Promise.all(promises)
-
-    return countryProducts
-      .flatMap((countryData) =>
-        countryData.products.map((product) => ({
-          countryCode: countryData.country,
-          handle: product.handle,
-        }))
-      )
-      .filter((param) => param.handle)
-  } catch (error) {
-    console.error(
-      `Failed to generate static paths for product pages: ${
-        error instanceof Error ? error.message : "Unknown error"
-      }.`
-    )
-    return []
-  }
+  // Skip static generation - generate pages on-demand
+  return []
 }
 
 export async function generateMetadata(props: Props): Promise<Metadata> {

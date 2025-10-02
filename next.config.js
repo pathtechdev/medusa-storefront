@@ -14,6 +14,9 @@ const nextConfig = {
     isrMemoryCacheSize: 0,
   },
   
+  // Generate pages on-demand, not at build time
+  dynamicParams: true,
+  
   logging: {
     fetches: {
       fullUrl: true,
