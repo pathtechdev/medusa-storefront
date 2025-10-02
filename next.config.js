@@ -7,7 +7,12 @@ checkEnvVariables()
  */
 const nextConfig = {
   reactStrictMode: true,
-  // output: 'standalone', // Disabled for Railway - only needed for Docker
+  output: 'standalone',
+  
+  // Skip static generation during build - generate on-demand
+  experimental: {
+    isrMemoryCacheSize: 0,
+  },
   
   logging: {
     fetches: {
@@ -37,6 +42,10 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "medusa-server-testing.s3.us-east-1.amazonaws.com",
+      },
+      {
+        protocol: "https",
+        hostname: "yingfloral-production.up.railway.app",
       },
     ],
   },

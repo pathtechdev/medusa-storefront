@@ -9,4 +9,5 @@ restartPolicyType = "on_failure"
 restartPolicyMaxRetries = 3
 
 [variables]
-NODE_VERSION = "18"
+NODE_VERSION = "20"
+NIXPACKS_NO_MUSL = "1"
