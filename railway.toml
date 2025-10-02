@@ -2,7 +2,7 @@
 builder = "NIXPACKS"
 
 [deploy]
-startCommand = "node .next/standalone/server.js"
+startCommand = "npm start"
 healthcheckPath = "/"
 healthcheckTimeout = 100
 restartPolicyType = "on_failure"
@@ -11,3 +11,4 @@ restartPolicyMaxRetries = 3
 [variables]
 NODE_VERSION = "20"
 NIXPACKS_NO_MUSL = "1"
+PORT = "3000"

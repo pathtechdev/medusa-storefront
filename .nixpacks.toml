@@ -11,7 +11,7 @@ cmd = "npm ci"
 cmd = "npm run build"
 
 [start]
-cmd = "node .next/standalone/server.js"
+cmd = "npm start"
 
 [variables]
 NEXT_PUBLIC_MEDUSA_BACKEND_URL = "https://yingfloral-production.up.railway.app"
