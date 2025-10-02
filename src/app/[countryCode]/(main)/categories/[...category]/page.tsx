@@ -16,35 +16,8 @@ type Props = {
 }
 
 export async function generateStaticParams() {
-  // Skip static generation when using mock data
-  if (process.env.NEXT_PUBLIC_USE_MOCK_DATA === 'true') {
-    return []
-  }
-
-  const product_categories = await listCategories()
-
-  if (!product_categories) {
-    return []
-  }
-
-  const countryCodes = await listRegions().then((regions: StoreRegion[]) =>
-    regions?.map((r) => r.countries?.map((c) => c.iso_2)).flat()
-  )
-
-  const categoryHandles = product_categories.map(
-    (category: any) => category.handle
-  )
-
-  const staticParams = countryCodes
-    ?.map((countryCode: string | undefined) =>
-      categoryHandles.map((handle: any) => ({
-        countryCode,
-        category: [handle],
-      }))
-    )
-    .flat()
-
-  return staticParams
+  // Skip static generation - generate pages on-demand
+  return []
 }
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
